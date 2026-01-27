@@ -1,0 +1,95 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(2, 2, 3, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 1.25rem 0;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--fg-primary);
+    position: relative;
+    display: inline-block;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    bottom: 4px;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-secondary);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-secondary);
+}
+
+.links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.link {
+    color: var(--fg-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.link:hover {
+    color: var(--fg-primary);
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gradient-main);
+    transition: width 0.3s ease;
+}
+
+.link:hover::after {
+    width: 100%;
+}
+
+.connectButton {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    color: var(--fg-primary);
+    padding: 0.6rem 1.25rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.connectButton:hover {
+    background: var(--bg-panel-hover);
+    border-color: var(--border-highlight);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.15);
+    background: var(--gradient-main);
+    border-color: transparent;
+    color: white;
+}

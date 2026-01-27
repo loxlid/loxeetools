@@ -1,0 +1,115 @@
+.calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.inputsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+/* Ensure inputs are always side-by-side on desktop for neatness */
+@media (min-width: 500px) {
+    .inputsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-size: 0.8rem;
+    color: var(--fg-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-left: 0.25rem;
+}
+
+.input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 0.875rem 1rem;
+    color: var(--fg-primary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.input:focus {
+    border-color: var(--accent-primary);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.15);
+}
+
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Remove spinner buttons */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.results {
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-subtle);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.resultItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+/* Make Earnings full width */
+.resultItem:last-child {
+    grid-column: 1 / -1;
+    background: linear-gradient(145deg, rgba(139, 92, 246, 0.08), rgba(139, 92, 246, 0.02));
+    border-color: rgba(139, 92, 246, 0.2);
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.resultLabel {
+    font-size: 0.7rem;
+    color: var(--fg-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.resultValue {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--fg-primary);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.resultItem:last-child .resultValue {
+    font-size: 2rem;
+    color: var(--accent-primary);
+    margin-top: 0.25rem;
+    text-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
