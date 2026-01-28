@@ -9,12 +9,10 @@ const Navbar = () => {
                     loxeetools
                 </Link>
                 <div className={styles.links}>
-                    <Link href="/" className={styles.link}>Market</Link>
-                    <Link href="/news" className={styles.link}>News</Link>
-                    <Link href="/signals" className={styles.link}>Signals</Link>
+                    {/* Market, News, Signals removed */}
                 </div>
                 <div className={styles.actions}>
-                    {/* Wallet Connect removed */}
+                    <Link href="/ai" className={styles.aiLink}>AI Assistant ✨</Link>
                 </div>
             </div>
         </nav>

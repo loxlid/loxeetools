@@ -6,6 +6,7 @@ import AirdropCalculator from '@/components/AirdropCalculator';
 import { fetchMarketData } from '@/lib/api';
 import { fetchNews } from '@/lib/news';
 import { generateSignals } from '@/lib/signals';
+import styles from './Home.module.css';
 
 export default async function Home() {
   const marketData = await fetchMarketData();
@@ -13,64 +14,82 @@ export default async function Home() {
   const signals = generateSignals(marketData);
 
   return (
-    <main style={{ minHeight: '100vh', paddingBottom: '4rem' }}>
+    <main className={styles.main}>
       <Navbar />
 
       <div className="container">
-        <header style={{ padding: '4rem 0', textAlign: 'center' }}>
-          <h1 className="text-gradient" style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.03em' }}>
+        <header className={styles.hero}>
+          <h1 className={styles.title}>
             Crypto Intelligence
           </h1>
-          <p style={{ color: 'var(--fg-secondary)', fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
+          <p className={styles.subtitle}>
             Real-time market data, curated news, and potentially lucrative signals for the modern investor.
           </p>
         </header>
 
-        {/* Signals & News Section */}
-        {/* Signals & News Section */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', marginBottom: '4rem' }}>
+        <div className={styles.dashboardGrid}>
 
-          {/* Signals Section */}
-          <section style={{ flex: '1 1 400px', maxWidth: '600px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h2 style={{ fontSize: '1.75rem', fontWeight: 700 }}>AI Analysis</h2>
-              <span style={{ background: 'var(--accent-primary)', padding: '0.25rem 0.75rem', borderRadius: '99px', fontSize: '0.8rem', fontWeight: 600 }}>Live v2.0</span>
+          {/* AI Analysis Card */}
+          <section className={`${styles.card} ${styles.aiCard}`}>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>
+                <span>🤖 AI Analysis</span>
+              </h2>
+              <span className={styles.badge} style={{ background: 'rgba(139, 92, 246, 0.2)', color: '#a78bfa' }}>
+                Live v2.0
+              </span>
             </div>
-            <div className="glass-panel" style={{ padding: '1.5rem', minHeight: '300px' }}>
+            <div style={{ flex: 1, overflow: 'hidden' }}>
               <SignalList signals={signals} />
             </div>
           </section>
 
-          {/* News Section */}
-          <section style={{ flex: '1 1 400px', maxWidth: '600px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h2 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Latest News</h2>
-              <a href="/news" style={{ color: 'var(--accent-primary)', fontSize: '0.9rem', fontWeight: 600 }}>View All -&gt;</a>
+          {/* News Card */}
+          <section className={`${styles.card} ${styles.newsCard}`}>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>
+                <span>📰 Latest News</span>
+              </h2>
+              <a href="/news" className={styles.viewAll}>
+                View All <span>→</span>
+              </a>
             </div>
-            <div className="glass-panel" style={{ padding: '1.5rem', minHeight: '300px' }}>
+            <div style={{ flex: 1, overflow: 'hidden' }}>
               <NewsFeed news={newsData} />
             </div>
           </section>
 
-          {/* Airdrop Calculator Section */}
-          <section style={{ flex: '1 1 400px', maxWidth: '600px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h2 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Airdrop Calc</h2>
-              <span style={{ background: 'var(--accent-glow)', padding: '0.25rem 0.75rem', borderRadius: '99px', fontSize: '0.8rem', fontWeight: 600, color: '#fff' }}>New</span>
+          {/* Airdrop Calc Card */}
+          <section className={`${styles.card} ${styles.airdropCard}`}>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>
+                <span>🪂 Airdrop Calc</span>
+              </h2>
+              <span className={styles.badge} style={{ background: 'rgba(244, 63, 94, 0.2)', color: '#fb7185' }}>
+                New
+              </span>
             </div>
-            <div className="glass-panel" style={{ padding: '1.5rem', minHeight: '300px' }}>
+            <div style={{ flex: 1 }}>
               <AirdropCalculator />
             </div>
           </section>
 
         </div>
 
-        <section style={{ marginBottom: '4rem' }}>
+        <section style={{ animation: 'slideUp 0.8s ease-out 0.4s backwards' }}>
           <MarketTable data={marketData} />
         </section>
       </div>
-      <footer style={{ textAlign: 'center', padding: '2rem', fontSize: '0.8rem', color: 'var(--fg-secondary)', borderTop: '1px solid var(--border-subtle)', marginTop: 'auto' }}>
-        powered by loxee
+
+      <footer style={{
+        textAlign: 'center',
+        padding: '3rem',
+        fontSize: '0.9rem',
+        color: 'var(--fg-secondary)',
+        borderTop: '1px solid var(--border-subtle)',
+        marginTop: '6rem'
+      }}>
+        <div style={{ opacity: 0.7 }}>powered by <strong>loxee</strong></div>
       </footer>
     </main>
   );

@@ -73,23 +73,16 @@
     width: 100%;
 }
 
-.connectButton {
-    background: var(--bg-panel);
-    border: 1px solid var(--border-subtle);
-    color: var(--fg-primary);
-    padding: 0.6rem 1.25rem;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+/* AI Link Special Style */
+.aiLink {
+    composes: link;
+    background: linear-gradient(90deg, #c084fc, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
 }
 
-.connectButton:hover {
-    background: var(--bg-panel-hover);
-    border-color: var(--border-highlight);
-    box-shadow: 0 0 12px rgba(139, 92, 246, 0.15);
-    background: var(--gradient-main);
-    border-color: transparent;
-    color: white;
+.aiLink::after {
+    height: 2px;
+    background: linear-gradient(90deg, #c084fc, #6366f1);
 }
