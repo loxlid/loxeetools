@@ -2,6 +2,7 @@
     "name": "crypto-tools-root",
     "version": "1.0.0",
     "scripts": {
+        "postinstall": "cd crypto-tools && npm install",
         "dev": "npm run dev --prefix crypto-tools",
         "build": "npm run build --prefix crypto-tools",
         "start": "npm run start --prefix crypto-tools",
