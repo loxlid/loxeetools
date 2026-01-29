@@ -65,13 +65,17 @@ const AIChat = () => {
 
             // Check exact title match (Highest weight)
             if (topic.title.toLowerCase() === lowerQuery) hits += 10;
-            // Check title partial match
-            else if (topic.title.toLowerCase().includes(lowerQuery)) hits += 5;
+            // Check title partial match (bidirectional)
+            else if (topic.title.toLowerCase().includes(lowerQuery) || lowerQuery.includes(topic.title.toLowerCase())) hits += 5;
 
             // Check keywords (weight = 1)
             for (const k of topic.keywords) {
-                if (lowerQuery.includes(k.toLowerCase())) {
-                    hits += 1;
+                // Use Regex for whole word matching to avoid "s" matching "is"
+                const escapedKeyword = k.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(`\\b${escapedKeyword}\\b`, 'i');
+
+                if (regex.test(lowerQuery)) {
+                    hits += 3; // Increase weight for confirmed keyword match
                 }
             }
 
@@ -124,10 +128,37 @@ const AIChat = () => {
         // 1. Simulate "Thinking" / "Hacking" process
         await simulateReasoning();
 
-        // 2. Get Response
-        const responseText = findBestMatch(userMessage.content);
+        // 2. Get Context from Local Brain
+        const localContext = findBestMatch(userMessage.content);
+        let responseText = localContext;
+        let isGemini = false;
 
-        // 3. Create Placeholder Message
+        // 3. Try Gemini API
+        try {
+            const res = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    message: userMessage.content,
+                    context: localContext
+                })
+            });
+
+            if (res.ok) {
+                const data = await res.json();
+                if (data.text) {
+                    responseText = data.text;
+                    isGemini = true;
+                }
+            } else if (res.status === 401) {
+                // unauthorized means no key
+                responseText += "\n\n(⚠️ NOTE: Gemini API Key missing or invalid. Running in LOCAL MODE. Add key to .env.local for full intelligence.)";
+            }
+        } catch (error) {
+            console.warn("Using local fallback:", error);
+        }
+
+        // 4. Create Placeholder Message
         const aiMessageId = (Date.now() + 1).toString();
         const aiMessage: Message = {
             id: aiMessageId,
@@ -139,8 +170,9 @@ const AIChat = () => {
         setMessages(prev => [...prev, aiMessage]);
         setIsLoading(false);
 
-        // 4. Stream the response
-        await streamResponse(responseText, aiMessageId);
+        // 5. Stream the response
+        const prefix = isGemini ? "✨ [GEMINI UPLINK ESTABLISHED]\n\n" : "";
+        await streamResponse(prefix + responseText, aiMessageId);
     };
 
     const handleExampleClick = (text: string) => {

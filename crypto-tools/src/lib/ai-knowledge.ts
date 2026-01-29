@@ -2,7 +2,7 @@
 export interface KnowledgeItem {
     keywords: string[];
     title: string;
-    category: 'Layer 1' | 'Layer 2' | 'DeFi' | 'Tech' | 'History' | 'Trading' | 'Security' | 'NFT/Gaming' | 'Other';
+    category: 'Layer 1' | 'Layer 2' | 'DeFi' | 'Tech' | 'History' | 'Trading' | 'Security' | 'NFT/Gaming' | 'Infrastructure' | 'Privacy' | 'Memecoins' | 'RWA' | 'DeSci' | 'Other';
     content: string;
 }
 
@@ -11,339 +11,385 @@ export const cryptoKnowledge: KnowledgeItem[] = [
     // LAYER 1 BLOCKCHAINS (The Foundation)
     // ============================================
     {
-        keywords: ["bitcoin", "btc", "satoshi", "nakamoto", "pow", "halving", "taproot"],
+        keywords: ["bitcoin", "btc", "satoshi", "nakamoto", "pow", "halving", "taproot", "ordinals", "runes"],
         title: "Bitcoin (BTC)",
         category: "Layer 1",
-        content: "Bitcoin is the first decentralized cryptocurrency (2009). It uses Proof-of-Work to secure the network. Key events: The Halving (every 4 years), SegWit (2017), and Taproot (2021). It is the 'Digital Gold' standard."
+        content: "Bitcoin is the first decentralized cryptocurrency (2009). It uses Proof-of-Work. Key events: The Halving (every 4 years), SegWit (2017), Taproot (2021). Innovation has returned with Ordinals (NFTs on BTC) and Runes (Tokens)."
     },
     {
-        keywords: ["ethereum", "eth", "vitalik", "smart contract", "evm", "merge"],
+        keywords: ["ethereum", "eth", "vitalik", "smart contract", "evm", "merge", "dencun", "blobs"],
         title: "Ethereum (ETH)",
         category: "Layer 1",
-        content: "The leading smart contract platform. Transitioned to Proof-of-Stake in 'The Merge'. It powers most of DeFi and NFTs. Roadmap: Surge (L2s), Scourge (Censorship resistance), Verge, Purge, Splurge."
+        content: "The leading smart contract platform. Proof-of-Stake. Powers most DeFi/NFTs. Recent upgrades: 'Dencun' (EIP-4844) introduced 'Blobs' to drastically lower L2 fees. Roadmap: The Surge (Scaling), The Scourge, The Verge."
     },
     {
-        keywords: ["solana", "sol", "poh", "firedancer", "monolithic"],
+        keywords: ["solana", "sol", "poh", "firedancer", "monolithic", "svm"],
         title: "Solana (SOL)",
         category: "Layer 1",
-        content: "High-performance L1 using Proof-of-History. Known for low fees ($0.0002) and high speed (65k TPS). It takes a 'Monolithic' approach (doing everything on one chain) vs Ethereum's 'Modular' approach."
+        content: "High-performance L1 (65k TPS). Uses Proof-of-History. 'Firedancer' is a new validator client built by Jump Crypto to boost speed to 1M TPS. It is the home of 'DePIN' and memecoins."
     },
     {
-        keywords: ["cardano", "ada", "hoskinson", "eutxo", "peer review"],
+        keywords: ["cardano", "ada", "hoskinson", "eutxo", "peer review", "midnight"],
         title: "Cardano (ADA)",
         category: "Layer 1",
-        content: "A research-driven blockchain using the Ouroboros PoS consensus and eUTXO model. Known for academic rigor and formal verification, but slower development speed."
+        content: "Research-driven blockchain. eUTXO model. Hard forks like 'Chang' are moving it towards on-chain governance (Voltaire era). Also building 'Midnight', a privacy partner chain."
     },
     {
-        keywords: ["sui", "mysten", "move", "object centric"],
+        keywords: ["sui", "mysten", "move", "object centric", "walrus"],
         title: "Sui",
         category: "Layer 1",
-        content: "A high-speed L1 built by former Meta engineers using the 'Move' programming language. It uses an 'Object-Centric' data model (everything is an NFT-like object) allowing for parallel transaction execution."
+        content: "L1 using 'Move' lang. Object-Centric model allows parallel execution. 'Walrus' is their decentralized storage protocol. Known for sub-second latency."
     },
     {
         keywords: ["aptos", "apt", "move", "block-stm"],
         title: "Aptos",
         category: "Layer 1",
-        content: "Also built by ex-Meta engineers using Move. Focuses on the Block-STM parallel execution engine to achieve 100k+ theoretical TPS. Direct competitor to Sui and Solana."
+        content: "L1 using 'Move' and Block-STM for parallel execution. Partnered with Microsoft for AI integration. Focuses on enterprise adoption."
     },
     {
-        keywords: ["sei", "trading", "orderbook", "parallel"],
+        keywords: ["sei", "trading", "orderbook", "parallel", "v2"],
         title: "Sei",
         category: "Layer 1",
-        content: "A specialized L1 optimized for trading. It has a built-in Central Limit Order Book (CLOB) engine and uses Parallel EVM technology for extreme speed."
+        content: "The first parallelized EVM blockchain. Optimized for trading with a native order matching engine. Sei v2 added full EVM compatibility."
     },
     {
-        keywords: ["ton", "telegram", "open network", "sharding"],
+        keywords: ["ton", "telegram", "open network", "sharding", "hamster"],
         title: "TON (The Open Network)",
         category: "Layer 1",
-        content: "Originally built by Telegram. It uses 'Infinite Sharding' to scale. Deeply integrated into the Telegram app (800M users), making it a massive on-ramp for Web3 adoption."
+        content: "Integrated into Telegram (900M users). Uses dynamic sharding. Home to viral 'Tap-to-Earn' games like Hamster Kombat and Notcoin. The ultimate Web3 on-ramp."
     },
     {
-        keywords: ["near", "sharding", "nightshade", "account"],
+        keywords: ["near", "sharding", "nightshade", "chain abstraction", "ai"],
         title: "NEAR Protocol",
         category: "Layer 1",
-        content: "Uses 'Nightshade' sharding. Known for 'Chain Abstraction' (hiding crypto complexity) and human-readable addresses (e.g., 'alice.near')."
+        content: "Focuses on 'Chain Abstraction' (one account for all chains) and AI (Near.AI). Uses Nightshade sharding for infinite scaling."
     },
     {
-        keywords: ["fantom", "ftm", "sonic", "dag", "lachesis"],
-        title: "Fantom (Sonic)",
+        keywords: ["fantom", "ftm", "sonic", "dag", "$s"],
+        title: "Sonic (Fantom)",
         category: "Layer 1",
-        content: "Uses a DAG-based consensus (Lachesis). It is rebranding/upgrading to 'Sonic' to achieve 2,000+ TPS with sub-second finality."
+        content: "Fantom rebranded to Sonic ($S). A new high-performance L1 connecting to Ethereum via a massive L2 bridge. 10k TPS with 1s finality."
     },
     {
-        keywords: ["bsc", "bnb", "binance", "smart chain"],
-        title: "BNB Chain (BSC)",
+        keywords: ["bsc", "bnb", "binance", "opbnb"],
+        title: "BNB Chain",
         category: "Layer 1",
-        content: "A fork of Ethereum (Geth) with larger blocks and fewer validators (DPoS) for speed and low fees. Controlled largely by the Binance ecosystem. High retail usage."
+        content: "Binance's ecosystem. Includes BSC (L1), opBNB (L2), and Greenfield (Storage). Highly centralized but extremely cheap and popular in emerging markets."
     },
     {
-        keywords: ["tron", "trx", "justin sun", "usdt"],
-        title: "Tron (TRX)",
-        category: "Layer 1",
-        content: "Founded by Justin Sun. It is the dominant chain for USDT (Tether) transfers due to low fees. Uses DPoS consensus."
-    },
-    {
-        keywords: ["avalanche", "avax", "subnets", "snowman"],
+        keywords: ["avalanche", "avax", "subnets", "firewood"],
         title: "Avalanche",
         category: "Layer 1",
-        content: "EVM compatible but uses Snowman consensus. Key feature is 'Subnets' - app-specific chains that share security but are customizable."
+        content: "Network of custom 'Subnets'. 'Firewood' is their new database engine. Partnered with heavyweights like JP Morgan and AWS for institutional subnets."
     },
     {
-        keywords: ["kaspa", "kas", "blockdag", "ghostdag", "pow"],
+        keywords: ["kaspa", "kas", "blockdag", "ghostdag", "pow", "krc20"],
         title: "Kaspa",
         category: "Layer 1",
-        content: "A Proof-of-Work chain that uses a BlockDAG (Directed Acyclic Graph) instead of a linear chain. It allows blocks to be created in parallel, solving the 'Trilemma' of Security, Scalability, and Decentralization."
+        content: "The fastest Proof-of-Work chain using BlockDAG. No blocks, just a DAG of transactions by the second. Launched KRC-20 tokens recently."
     },
     {
-        keywords: ["monero", "xmr", "privacy", "ring ct"],
-        title: "Monero",
+        keywords: ["monad", "parallel evm", "keone"],
+        title: "Monad",
         category: "Layer 1",
-        content: "The gold standard for privacy. Uses Ring Signatures and Stealth Addresses to hide sender, receiver, and amount. IRS has a bounty to crack it (unsuccessfully so far)."
+        content: "Highly anticipated L1. Parallel EVM with 10k TPS. Rebuilt the EVM from scratch (MonadDb) to optimize state access. 'Solana speed with Ethereum compatibility'."
+    },
+    {
+        keywords: ["bera", "berachain", "pol", "proof of liquidity"],
+        title: "Berachain",
+        category: "Layer 1",
+        content: "EVM-compatible chain built on Cosmos SDK. Uses 'Proof of Liquidity' consensus where validators must provide liquidity to dApps. Cult-like community."
     },
 
     // ============================================
     // LAYER 2 & SCALING
     // ============================================
     {
-        keywords: ["arbitrum", "arb", "optimistic", "rollup"],
+        keywords: ["arbitrum", "arb", "optimistic", "rollup", "stylus"],
         title: "Arbitrum",
         category: "Layer 2",
-        content: "The leading Ethereum L2 by TVL. Uses Optimistic Rollup tech. 'Arbitrum One' is for DeFi, 'Nova' is for gaming."
+        content: "TVL Leader. 'Stylus' upgrade allows writing contracts in Rust/C++. Planning 'Orbit' chains (L3s)."
     },
     {
-        keywords: ["optimism", "op", "superchain", "stack"],
+        keywords: ["optimism", "op", "superchain", "interop"],
         title: "Optimism",
         category: "Layer 2",
-        content: "Optimistic Rollup. Creator of the 'OP Stack', a framework for building L2s. Base, Zora, and Worldcoin are all built on the OP Stack (The Superchain)."
+        content: "Building the 'Superchain' - a network of interconnected L2s (Base, Zora, Mode) sharing a bridge and sequencer."
     },
     {
-        keywords: ["base", "coinbase", "blue"],
+        keywords: ["base", "coinbase", "smart wallet"],
         title: "Base",
         category: "Layer 2",
-        content: "Coinbase's L2 built on OP Stack. No token (yet). Leveraging Coinbase's 100M+ users to bring retail on-chain."
+        content: "Coinbase's L2. The home of 'SocialFi' (Friend.tech) and retail meme trading. Heavily integrated with Coinbase Smart Wallet."
     },
     {
-        keywords: ["zksync", "zk", "matter labs", "hyperchain"],
-        title: "zkSync",
+        keywords: ["zksync", "zk", "matter labs", "elastic chain"],
+        title: "ZKsync",
         category: "Layer 2",
-        content: "A ZK-Rollup using 'ZK-SNARKs'. Features native Account Abstraction. Moving towards a 'Hyperchain' network."
+        content: "ZK Rollup. Transitioning to 'Elastic Chain' architecture (similar to Superchain/Polygon AggLayer). Native Account Abstraction."
     },
     {
-        keywords: ["starknet", "stark", "cairo", "zastrk"],
+        keywords: ["starknet", "stark", "cairo", "game"],
         title: "Starknet",
         category: "Layer 2",
-        content: "A ZK-Rollup using 'STARKs' (Quantum resistant). Written in a custom language 'Cairo', not Solidity. High performance but harder for devs to adapt."
+        content: "The 'Math' chain. Uses ZK-STARKs. Logic written in Cairo. Very popular for fully on-chain games (Dojo engine)."
     },
     {
         keywords: ["blast", "yield", "blur", "pacman"],
         title: "Blast",
         category: "Layer 2",
-        content: "An Optimistic Rollup with 'Native Yield'. ETH and Stablecoins held on Blast automatically earn staking yield (via Lido/Maker). Created by the Blur NFT team."
+        content: "Native Yield L2. 4-5% on ETH/Stablecoins just by holding. Home to 'degens' and points farming."
     },
     {
-        keywords: ["polygon", "matic", "aggayer", "cdk"],
-        title: "Polygon 2.0",
+        keywords: ["polygon", "matic", "pol", "agglayer", "cdk", "zkevm"],
+        title: "Polygon (Polygon 2.0)",
         category: "Layer 2",
-        content: "Moving from a sidechain to a ZK-powered ecosystem. 'AggLayer' connects all chains securely. Polygon CDK allows anyone to build a ZK chain."
+        content: "Rebranded MATIC to POL. 'AggLayer' aggregates ZK proofs from many chains to create a unified liquidity layer. Polygon CDK powers many L2s (Astar, Immutable)."
+    },
+    {
+        keywords: ["mantle", "mnt", "treasury", "ethna"],
+        title: "Mantle",
+        category: "Layer 2",
+        content: "Modular L2 using EigenDA for data availability. Has one of the largest treasuries ($2B+) to fund ecosystem."
+    },
+    {
+        keywords: ["linea", "consensys", "metamask"],
+        title: "Linea",
+        category: "Layer 2",
+        content: "ZK L2 built by ConsenSys (Metamask creators). Heavily integrated into Metamask wallet."
+    },
+    {
+        keywords: ["scroll", "zkevm", "bytecode"],
+        title: "Scroll",
+        category: "Layer 2",
+        content: "Bytecode-level compatible ZK-EVM. Prioritizes 'Ethereum alignment' and open source values covering proof markets."
     },
 
     // ============================================
-    // DEFI PROTOCOLS
+    // INFRASTRUCTURE & MODULAR
     // ============================================
     {
-        keywords: ["uniswap", "uni", "amm", "swap", "v3", "v4", "hooks"],
+        keywords: ["celestia", "tia", "data availability", "da", "modular"],
+        title: "Celestia",
+        category: "Infrastructure",
+        content: "The first Data Availability (DA) layer. 'Blobstream' allows L2s to post data to Celestia instead of Ethereum, saving 99% on fees. 'Modular Money'."
+    },
+    {
+        keywords: ["eigenlayer", "restaking", "avs", "points"],
+        title: "EigenLayer",
+        category: "Infrastructure",
+        content: "Introduced 'Restaking'. Allows ETH stakers to secure other protocols (AVSs - Actively Validated Services) like Oracle networks or Bridges for extra yield."
+    },
+    {
+        keywords: ["layerzero", "zro", "omnichain", "bridge", "stargate"],
+        title: "LayerZero",
+        category: "Infrastructure",
+        content: "Interoperability protocol. Allows sending messages (tokens) between blockchains. Powers 'Stargate' bridge. OFT standard allows tokens to move natively across chains."
+    },
+    {
+        keywords: ["wormhole", "w", "bridge", "portal"],
+        title: "Wormhole",
+        category: "Infrastructure",
+        content: "Cross-chain messaging protocol. Major competitor to LayerZero. Used heavily by Solana ecosystem."
+    },
+    {
+        keywords: ["pyth", "oracle", "pull"],
+        title: "Pyth Network",
+        category: "Infrastructure",
+        content: "High-speed Oracle. Uses a 'Pull' model (apps request price updates) vs Chainlink's 'Push'. Dominant on Solana and high-speed chains."
+    },
+    {
+        keywords: ["chainlink", "link", "ccip", "oracle", "data feed"],
+        title: "Chainlink",
+        category: "Infrastructure",
+        content: "The industry standard Oracle. 'CCIP' (Cross-Chain Interoperability Protocol) allows banks (Swift) to connect to blockchain."
+    },
+    {
+        keywords: ["the graph", "grt", "subgraph", "indexing"],
+        title: "The Graph",
+        category: "Infrastructure",
+        content: "The 'Google of Blockchain'. Indexes on-chain data so apps can query it via GraphQL APIs (Subgraphs)."
+    },
+    {
+        keywords: ["filecoin", "fil", "storage", "ipfs"],
+        title: "Filecoin",
+        category: "Infrastructure",
+        content: "Decentralized storage network. An incentive layer for IPFS. Alternatives: Arweave (Permanent storage)."
+    },
+    {
+        keywords: ["arweave", "ar", "permaweb", "ao"],
+        title: "Arweave (AO)",
+        category: "Infrastructure",
+        content: "Permanent storage. 'AO' is a new hyper-parallel computer built on top of Arweave, aiming to compete with Solana/Ethereum."
+    },
+
+    // ============================================
+    // DEFI & TRADING
+    // ============================================
+    {
+        keywords: ["uniswap", "uni", "amm", "swap", "v4", "hooks"],
         title: "Uniswap",
         category: "DeFi",
-        content: "The original AMM. V3 introduced Concentrated Liquidity. V4 is coming with 'Hooks' (custom logic for pools). The most forked protocol in history."
+        content: "Top AMM. V4 introduces 'Hooks' (custom logic) and 'Singleton' contract for gas efficiency."
     },
     {
-        keywords: ["aave", "lend", "borrow", "flash loan", "ghost"],
+        keywords: ["aave", "gho", "lend", "flash loan"],
         title: "Aave",
         category: "DeFi",
-        content: "Top Lending/Borrowing protocol. Popularized 'Flash Loans'. V3 introduced 'Portals' for cross-chain liquidity and Efficiency Mode."
+        content: "Top Lender. Emitted 'GHO' stablecoin. V4 plans for a unified liquidity layer."
     },
     {
-        keywords: ["maker", "mkr", "dai", "stablecoin", "cdp"],
-        title: "MakerDAO",
+        keywords: ["ethena", "ena", "usde", "delta neutral", "yield"],
+        title: "Ethena",
         category: "DeFi",
-        content: "Issuer of DAI, the decentralized stablecoin. Users open CDPs (Collateralized Debt Positions) to mint DAI. Now rebranding to 'Sky' with the USDS stablecoin."
+        content: "Issuer of USDe, a 'synthetic dollar'. Backed by Delta Neutral hedge (Long ETH Spot + Short ETH Perp) to earn funding rates. High yield, higher risk."
     },
     {
-        keywords: ["lido", "ldo", "steth", "liquid staking"],
-        title: "Lido",
-        category: "DeFi",
-        content: "Liquid Staking solution. You stake ETH and get 'stETH' (a receipt token) which you can use in DeFi while earning rewards. Controls ~30% of all staked ETH."
-    },
-    {
-        keywords: ["curve", "crv", "stable swap", "ve", "bribe"],
-        title: "Curve Finance",
-        category: "DeFi",
-        content: "Optimized for stablecoin swaps (USDT to USDC) with low slippage. Created the 'veToken' (Vote Escrow) model which powers the 'Curve Wars'."
-    },
-    {
-        keywords: ["gmx", "perp", "leverage", "glp"],
-        title: "GMX",
-        category: "DeFi",
-        content: "Decentralized Perpetual Exchange. Users trade against the GLP pool (a basket of assets). Arbitrum's flagship DeFi app."
-    },
-    {
-        keywords: ["synthetix", "snx", "synth", "derivatives"],
-        title: "Synthetix",
-        category: "DeFi",
-        content: "Liquidity layer for derivatives. Allows creation of 'Synths' (sUSD, sBTC, sGold). Powers frontends like Kwenta."
-    },
-    {
-        keywords: ["pendle", "yield trading", "pt", "yt"],
-        title: "Pendle",
-        category: "DeFi",
-        content: "Allows users to tokenize and trade yield. Splits assets into PT (Principal Token) and YT (Yield Token). Massive for 'Points trading'."
-    },
-    {
-        keywords: ["jupiter", "jup", "aggregator", "solana"],
+        keywords: ["jupiter", "jup", "perps", "launchpad", "lfg"],
         title: "Jupiter",
         category: "DeFi",
-        content: "The key liquidity aggregator on Solana. Routes trades through all DEXs for best price. Also offers Perps and DCA."
+        content: "Solana's grand aggregator. Swap, Limit Orders, DCA, Perps, and Launchpad (LFG). 80% of Solana volume flows through it."
+    },
+    {
+        keywords: ["pendle", "pt", "yt", "yield trading"],
+        title: "Pendle",
+        category: "DeFi",
+        content: "Yield tokenization. Splits assets into Principal (PT) and Yield (YT). Used to speculate on points/yield (e.g., buying YT-eETH to 10x leverage points)."
+    },
+    {
+        keywords: ["blur", "nft marketplace", "blend"],
+        title: "Blur",
+        category: "DeFi",
+        content: "Pro NFT marketplace. 'Blend' protocol allows NFT lending/borrowing (BNPL for NFTs)."
+    },
+    {
+        keywords: ["aerodrome", "aero", "base", "ve33"],
+        title: "Aerodrome",
+        category: "DeFi",
+        content: "The central liquidity hub on Base. Uses Ve(3,3) mechanics (fork of Solidly/Velodrome)."
     },
 
     // ============================================
-    // TECHNICAL STANDARDS
+    // MEMECOINS (Culture)
     // ============================================
     {
-        keywords: ["erc20", "erc-20", "token standard"],
-        title: "ERC-20",
-        category: "Tech",
-        content: "The standard interface for fungible tokens on Ethereum. Every token like UNI, LINK, PEPE is an ERC-20 contract."
+        keywords: ["doge", "dogecoin", "elon", "shib"],
+        title: "Dogecoin (DOGE)",
+        category: "Memecoins",
+        content: "The original memecoin (2013). Proof of Work (merged mined with Litecoin). Elon Musk's favorite."
     },
     {
-        keywords: ["erc721", "erc-721", "nft"],
-        title: "ERC-721",
-        category: "Tech",
-        content: "The standard for Non-Fungible Tokens (NFTs). Each token has a unique ID. Used for Bored Apes, Azukis, etc."
+        keywords: ["pepe", "frog", "rare"],
+        title: "Pepe (PEPE)",
+        category: "Memecoins",
+        content: "The king of Ethereum memes. 'Feels Good Man'. Launched in 2023 and flipped SHIB in volume."
     },
     {
-        keywords: ["erc1155", "erc-1155", "multi token"],
-        title: "ERC-1155",
-        category: "Tech",
-        content: "Multi-Token standard. Can batch transfer fungible and non-fungible tokens in one transaction. Great for gaming items."
+        keywords: ["wif", "dogwifhat", "hat", "solana meme"],
+        title: "dogwifhat (WIF)",
+        category: "Memecoins",
+        content: "The mascot of Solana's 2024 run. It's literally a dog wif a hat. Community raised money to put it on the Las Vegas Sphere."
     },
     {
-        keywords: ["erc4337", "account abstraction", "smart wallet"],
-        title: "ERC-4337 (Account Abstraction)",
-        category: "Tech",
-        content: "Upgrades wallets to smart contracts. Enables: Gasless transactions, Social recovery, Batching, and Session keys."
+        keywords: ["bonk", "solana", "utility meme"],
+        title: "Bonk",
+        category: "Memecoins",
+        content: "The first Solana dog coin. Airdropped to devs/artists after FTX crash to revive the chain. Has trading bots and utility."
     },
     {
-        keywords: ["erc6551", "tba", "token bound account"],
-        title: "ERC-6551 (Token Bound Accounts)",
-        category: "Tech",
-        content: "Gives every NFT its own wallet address. An NFT can now own tokens, other NFTs, or sign transactions. Example: An RPG character NFT that owns its sword and shield NFTs."
+        keywords: ["brett", "base", "pepe friend"],
+        title: "Brett",
+        category: "Memecoins",
+        content: "The mascot of Base chain. Based on Matt Furie's 'Boys Club' comic (Pepe's best friend)."
     },
     {
-        keywords: ["erc4626", "vault", "yield"],
-        title: "ERC-4626",
-        category: "Tech",
-        content: "Standardized 'Tokenized Vaults'. Makes it easy for apps to plug into yield sources (like Aave or Yearn) without custom code for each."
+        keywords: ["mog", "culture", "cat"],
+        title: "Mog Coin (MOG)",
+        category: "Memecoins",
+        content: "First culture coin on ETH. 'Mogging' stands for dominating. Community uses '🫵😹' emoji."
     },
 
     // ============================================
-    // HISTORY & EVENTS
+    // RWA (Real World Assets)
     // ============================================
     {
-        keywords: ["dao hack", "ethereum classic", "etc", "fork"],
-        title: "The DAO Hack (2016)",
-        category: "History",
-        content: "The first major DAO raised $150M and was hacked due to a reentrancy bug. Ethereum hard-forked to reverse the theft, creating 'Ethereum' (ETH) and preserving the hacked chain as 'Ethereum Classic' (ETC)."
+        keywords: ["ondo", "ousg", "treasuries", "yield"],
+        title: "Ondo Finance",
+        category: "RWA",
+        content: "Tokenized US Treasuries. Allows stablecoin holders to earn risk-free 'real world' yield on-chain. Partners with BlackRock."
     },
     {
-        keywords: ["ico", "2017", "boom"],
-        title: "ICO Boom (2017)",
-        category: "History",
-        content: "Initial Coin Offerings. Startups raised billions by selling whitepapers. 99% failed, but it birthed BNB, Chainlink, and Aave."
+        keywords: ["blackrock", "buidl", "fund"],
+        title: "BlackRock BUIDL",
+        category: "RWA",
+        content: "BlackRock's tokenized fund on Ethereum. $500M+ AUM. Used as collateral in DeFi (Ondo, FalconX)."
     },
     {
-        keywords: ["defi summer", "2020", "compound", "yield farming"],
-        title: "DeFi Summer (2020)",
-        category: "History",
-        content: "Triggered by Compound launching COMP tokens for liquidity mining. Yield farming went mainstream. YFI, UNI, SUSHI all launched here."
-    },
-    {
-        keywords: ["luna", "ust", "do kwon", "spiral", "crash"],
-        title: "Terra/Luna Crash (May 2022)",
-        category: "History",
-        content: "$40B wiped out in days. UST (algo stablecoin) lost peg. LUNA was minted infinitely to try to fix it, inflating supply from 300M to 6 Trillion. Triggered the bear market."
-    },
-    {
-        keywords: ["ftx", "sbf", "alameda", "fraud"],
-        title: "FTX Collapse (Nov 2022)",
-        category: "History",
-        content: "FTX (2nd largest exchange) was stealing user funds to plug holes in Alameda Research. SBF was arrested. 3AC, Voyager, Celsius, and BlockFi all collapsed in the contagion."
+        keywords: ["centrifuge", "cfg", "credit"],
+        title: "Centrifuge",
+        category: "RWA",
+        content: "On-chain credit. Businesses tokenize invoices/assets to borrow stablecoins from DeFi liquidity."
     },
 
     // ============================================
-    // MARKET & TRADING
+    // DeSci (Decentralized Science)
     // ============================================
     {
-        keywords: ["rsi", "relative strength", "momentum"],
-        title: "RSI (Relative Strength Index)",
-        category: "Trading",
-        content: "Momentum indicator. >70 is Overbought (Sell signal), <30 is Oversold (Buy signal)."
+        keywords: ["desci", "science", "research"],
+        title: "DeSci (General)",
+        category: "DeSci",
+        content: "Using crypto rails to fund and govern scientific research. IP (Intellectual Property) is tokenized as IPT-NFTs."
     },
     {
-        keywords: ["fib", "fibonacci", "retracement"],
-        title: "Fibonacci Retracement",
-        category: "Trading",
-        content: "Key support/resistance levels based on the golden ratio. Common levels: 0.382, 0.5, and 0.618 ('The Golden Pocket')."
+        keywords: ["vita", "vitadao", "longevity"],
+        title: "VitaDAO",
+        category: "DeSci",
+        content: "Funds longevity/aging research. Funded by Pfizer. Token holders own the IP rights to discovered drugs."
     },
     {
-        keywords: ["funding rate", "perp", "fees"],
-        title: "Funding Rates",
-        category: "Trading",
-        content: "Periodic payments between longs and shorts to keep Perp price near Spot price. Positive funding = Longs pay Shorts (Bullish sentiment). Negative = Shorts pay Longs (Bearish)."
-    },
-    {
-        keywords: ["oi", "open interest"],
-        title: "Open Interest (OI)",
-        category: "Trading",
-        content: "Total number of open derivative contracts. Rising OI + Rising Price = Bullish Validation. Rising OI + Falling Price = Bearish Validation. Falling OI = Trend weakening."
-    },
-    {
-        keywords: ["cvd", "cumulative volume delta"],
-        title: "CVD (Cumulative Volume Delta)",
-        category: "Trading",
-        content: "Tracks the difference between buying and selling volume. Helps spot discrepancies (e.g., Price going up, but CVD going down means 'exhaustion' or lack of buyer demand)."
+        keywords: ["pump.science", "pump", "experiments"],
+        title: "Pump.science",
+        category: "DeSci",
+        content: "Gamified DeSci. Users verify longevity supplements on worms/flies streamed live. Tokens represent the success of the experiment."
     },
 
     // ============================================
-    // SECURITY
+    // PRIVACY
     // ============================================
     {
-        keywords: ["reentrancy", "hack", "bug"],
-        title: "Reentrancy Attack",
-        category: "Security",
-        content: "A contract calls an external contract, which calls back into the first contract before the first execution finishes. Used to drain funds (e.g., The DAO Hack, various DeFi hacks)."
+        keywords: ["tornado", "cash", "mixer", "ofac"],
+        title: "Tornado Cash",
+        category: "Privacy",
+        content: "Decentralized mixer on Ethereum. Breaks the on-chain link between sender and receiver. Sanctioned by US OFAC, but the code is immutable."
     },
     {
-        keywords: ["honeypot", "scam", "cant sell"],
-        title: "Honeypot Scam",
-        category: "Security",
-        content: "A token you can buy but cannot sell. The code usually whitelists only the creator to sell."
+        keywords: ["railgun", "rail", "shielded"],
+        title: "Railgun",
+        category: "Privacy",
+        content: "Smart contract system for private DeFi usage. Allows users to interact with Uniswap/Aave privately using zk-SNARKs."
     },
     {
-        keywords: ["oracle manipulation", "flash loan attack"],
-        title: "Oracle Manipulation",
-        category: "Security",
-        content: "Attacker uses a Flash Loan to pump a token price on a DEX, updates the price Oracle, and then takes a massive loan against the inflated collateral on a lending app."
+        keywords: ["zama", "fhe", "homomorphic", "encryption"],
+        title: "Zama",
+        category: "Privacy",
+        content: "Open source cryptography company building Fully Homomorphic Encryption (FHE) for blockchain. FHE allows computation on encrypted data without decrypting it. Powering the 'HTTPZ' protocol."
     },
     {
-        keywords: ["phishing", "drainer", "permit", "signature"],
-        title: "Phishing / Wallet Drainers",
-        category: "Security",
-        content: "Fake websites tricking you to sign a 'Permit' or 'SetApprovalForAll'. Once signed, they drain your wallet without you sending a transaction."
+        keywords: ["octra", "fhe", "hypergraph"],
+        title: "Octra",
+        category: "Layer 1",
+        content: "A high-perfomance FHE blockchain. Uses 'Hypergraph' technology to enable confidential computing at scale. Competitor to Fhenix and Inco."
+    },
+    {
+        keywords: ["fhenix", "fhe", "rollup"],
+        title: "Fhenix",
+        category: "Layer 2",
+        content: "The first FHE-powered Layer 2. Brings confidentiality to Ethereum smart contracts. Uses Zama's technology."
     }
 ];
 
 export const fallbackResponses = [
-    "I have searched the Archives. My current database covers 100+ highly specific topics. Could you provide a Category? (e.g. 'Is that a Layer 1?', 'Is it a DeFi protocol?')",
-    "Query unclear. I am trained on deep crypto lore, from the 2017 Block Size Wars to the latest ERC-6551 standards. Try using specific keywords.",
-    "Accessing mempool... No exact match. Try asking about 'Security', 'Trading Indicators', or specific 'History' events."
+    "I have searched the Archives. My current database covers 100+ topics including L1s, L2s, DeFi, Memecoins, and RWA. Could you provide a specific keyword? (e.g., 'WIF', 'EigenLayer', 'Ondo')",
+    "Query unclear. I am trained on deep crypto lore, from Satoshi to the latest Solana memecoins. Try asking 'What is DeSci?' or 'Explain Restaking'.",
+    "Accessing mempool... No exact match. I can explain Trading, History, Tech, or specific projects. Try searching for a ticker symbol like 'ENA' or 'TIA'."
 ];
